@@ -113,8 +113,8 @@ class SeleniumMiddleware:
     def __init__(self,timeout=None):
         self.timeout = timeout
         chrome_options = Options()
-        # chrome_options.add_argument('--headless')
-        # chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
         chrome_options.add_experimental_option('prefs',{'profile.managed_default_content_settings.images':2})
         self.browser = webdriver.Chrome(options=chrome_options)
         # self.browser.set_window_size(1400,700)

@@ -33,10 +33,10 @@ class AnalysisDataClearPipeline(object):
                     item['disk'] = infos[1]
                 elif infos[0] == "厚度":
                     item['thickness'] = infos[1]
-            if "自营" in item['icons']:
-                item['self_sell'] = True
-            else:
-                item['self_sell'] = False
+            # if "自营" in item['icons']:
+            #     item['self_sell'] = True
+            # else:
+            #     item['self_sell'] = False
         return item
 
 class MongoPipeline(object):
