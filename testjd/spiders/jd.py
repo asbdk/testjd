@@ -11,7 +11,7 @@ import json
 class JdSpider(scrapy.Spider):
     name = 'jd'
     allowed_domains = ['jd.com','c0.3.cn']
-    start_urls = ['https://list.jd.com/list.html?cat=670,671,672']
+    start_urls = ['https://list.jd.com/list.html?cat=670,671,672&page=1&sort=sort_totalsales15_desc&trans=1&JL=6_0_0#J_main']
     def parse(self, response):
         time.sleep(1)
         items = response.css(".gl-item")
@@ -63,7 +63,7 @@ class JdSpider(scrapy.Spider):
         item = response.meta['item']
         # t = response.body.decode('gbk')
         stock = json.loads(response.body.decode('gbk'))
-        if stock['stock']['self_D']:
+        if stock['stock'].get('self_D'):
             item['shop'] = stock['stock']['self_D']['deliver']
             item['self_sell'] = True
         else:
